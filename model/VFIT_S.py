@@ -120,8 +120,8 @@ class UNet_3D_3D(nn.Module):
         fea2 = self.smooth_l(dx_2)
         fea1 = self.smooth(dx_1)
 
+        print('fee shape', fea3.shape)
         out_ll = self.predict_ll(fea3, frames, x_2.size()[-2:])
-
         out_l = self.predict_l(fea2, frames, x_1.size()[-2:])
         out_l = F.interpolate(out_ll, size=out_l.size()[-2:], mode='bilinear') + out_l
 
