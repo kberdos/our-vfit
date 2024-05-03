@@ -109,4 +109,4 @@ if __name__ == "__main__":
 
     dataset = VimeoSepTuplet("/home/zhihao/DATA-M2/video_interpolation//vimeo_septuplet/", is_training=True)
     print(dataset[0])
-    dataloader = DataLoader(dataset, batch_size=100, shuffle=False, num_workers=32, pin_memory=True)
+    dataloader = DataLoader(dataset, batch_size=100, shuffle=False, num_workers=0, pin_memory=True)
