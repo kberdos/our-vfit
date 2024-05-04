@@ -200,9 +200,7 @@ class SynBlock(nn.Module):
         H, W = output_size
 
         unbind = torch.unbind(fea, 1)
-        print("unbind len", len(unbind))
         occ = torch.cat(unbind, 1)
-        print("occy way shape", occ.shape)
         occ = self.lrelu(self.feature_fuse(occ))
         Occlusion = self.moduleOcclusion(occ, (H, W))
 

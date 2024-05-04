@@ -85,12 +85,12 @@ def train(args, epoch):
         overall_loss.backward()
         optimizer.step()
 
+        print('Train Epoch: {} [{}/{}]\tLoss: {:.6f}\tPSNR: {:.4f}  Lr:{:.6f}'.format(
+            epoch, i, len(train_loader), losses['total'].avg, psnrs.avg , optimizer.param_groups[0]['lr'], flush=True))
+
         # Calc metrics & print logs
         if i % args.log_iter == 0:
             myutils.eval_metrics(out, gt, psnrs, ssims)
-
-            print('Train Epoch: {} [{}/{}]\tLoss: {:.6f}\tPSNR: {:.4f}  Lr:{:.6f}'.format(
-                epoch, i, len(train_loader), losses['total'].avg, psnrs.avg , optimizer.param_groups[0]['lr'], flush=True))
 
             # Reset metrics
             losses, psnrs, ssims = myutils.init_meters(args.loss)
